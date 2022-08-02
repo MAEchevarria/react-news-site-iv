@@ -2,7 +2,6 @@ import Form from 'react-bootstrap/Form'
 import { useState, useEffect } from "react"
 import ArticleTeaser from "../components/ArticleTeaser"
 
-
 function Search ({articles}) {
 
     const [searchTitle, setSearchTitle] = useState('')
@@ -10,8 +9,6 @@ function Search ({articles}) {
     
     const handleChange = (event) => {
         const value = event.target.value
-        console.log(`${value} val changed`)
-
         setSearchTitle(value)
     }
 
@@ -23,7 +20,6 @@ function Search ({articles}) {
         else {
             setResults([])
        }
-
     }, [searchTitle])
 
     return (
@@ -34,16 +30,14 @@ function Search ({articles}) {
                 placeholder="Search"
                 aria-label="Search"
                 onChange={(event)=>{handleChange(event)}}
-                />
-                
+            />
             </Form>
             <div>
-            {
-                results.length > 0
+            {results.length > 0
                 ? <div >
                     <h2>search results</h2>
                     {results.map((article) => (
-                    <ArticleTeaser key={article.id} {...article}/>
+                    <ArticleTeaser key={article.objectID} {...article}/>
                 ))}</div>
                 : ''
             }
@@ -51,5 +45,4 @@ function Search ({articles}) {
         </div>
     )
 }
-
 export default Search

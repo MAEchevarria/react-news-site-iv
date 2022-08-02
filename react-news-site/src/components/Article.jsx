@@ -5,7 +5,7 @@ import {Image, Container, Row, Col } from 'react-bootstrap'
 // import Col from 'react-bootstrap/Col'
 
 
-function Article ({ image, title, byline, created_date, abstract}){
+function Article ({ image, title, author, created_at, story_text = '', url}){
 
     return(
         <Container >
@@ -20,18 +20,18 @@ function Article ({ image, title, byline, created_date, abstract}){
                         <h1>{title}</h1>
                     </Row>
                     <Row>
-                        <p>{created_date}</p>
+                        <p>{created_at}</p>
                     </Row>
                     <Row>
-                        { byline && <h2>{ byline }</h2> }
+                        { author && <h2>{ author }</h2> }
                     </Row>
                     <Row>
-                        <p>{abstract}</p>
+                        {story_text 
+                        ? <p>{story_text}</p>
+                        :<a href={url}>Link</a>
+                        }
                     </Row>
-
-                </Col>
-            
-                            
+                </Col>      
             </Row>
         </Container>
     )

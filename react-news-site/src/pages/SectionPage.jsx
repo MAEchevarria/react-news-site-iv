@@ -4,15 +4,15 @@ import ArticleList from '../components/ArticleList'
 
 function SectionPage ({articles}){
 
-    const { sectionName } = useParams()
+    const {sectionName} = useParams()
     const [sectionArticles, setSectionArticles] = useState([])
 
     useEffect( () => {
-        const filteredAtricles = articles.filter(article => article.section.toLowerCase() == sectionName.toLowerCase())
+        const filteredArticles = articles.filter(article => article.section.toLowerCase() == sectionName.toLowerCase())
 
-        setSectionArticles(filteredAtricles)
+        setSectionArticles(filteredArticles)
         
-        console.log(filteredAtricles)
+        console.log(filteredArticles)
     }, [sectionName])
     
 
@@ -21,7 +21,6 @@ function SectionPage ({articles}){
         {sectionArticles 
             ? <ArticleList articles={sectionArticles} />
             : 'no articles found'
-        
         }
         </div>
     )

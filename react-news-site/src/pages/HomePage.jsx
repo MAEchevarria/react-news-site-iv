@@ -1,10 +1,7 @@
 import ArticleList from "../components/ArticleList"
 import Search from "../components/Search"
 
-
 function HomePage ({articles}){
-
-
     return (
         <div>
             <Search articles={articles}/>
