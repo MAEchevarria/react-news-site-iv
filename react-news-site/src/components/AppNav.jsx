@@ -11,14 +11,13 @@ function AppNav (){
     
     return(
         <Navbar> 
-            <Navbar.Brand>
-                <img src="https://www.codeplatoon.org/wp-content/uploads/2018/10/CP-logo-2018-abbrev-1.png" width="60" />
-                CP News
+            <Navbar.Brand href='/'>
+                <Navbar.Text>
+                    <img src="https://www.codeplatoon.org/wp-content/uploads/2018/10/CP-logo-2018-abbrev-1.png" width="60" />
+                    CP News
+                </Navbar.Text>
             </Navbar.Brand>
             <Nav>
-                <Nav.Link href='/'>
-                    HOME
-                </Nav.Link>
                 {
                     navItems.map(((navItem, index) => {
                         return(

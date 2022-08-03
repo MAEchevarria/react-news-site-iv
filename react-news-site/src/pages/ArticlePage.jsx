@@ -4,8 +4,8 @@ import { fetchArticlesById } from '../api/ArticlesAPI'
 import {useState, useEffect} from 'react'
 
 function ArticlePage ({articles}){
+    
     let {articleID} = useParams()
-
     const[article, setArticle] = useState(null)
 
     useEffect(() => {

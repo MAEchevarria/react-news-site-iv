@@ -25,13 +25,16 @@ function App() {
   const[articles, setArticles] = useState([])
 
   const apiCall = () => {
-    const date = Math.floor(Date.now() /1000 ) - 86400
+    // Date.now() returns the number of milliseconds elapsed since January 1, 1970 00:00:00 UTC.
+    // convert milliseconds to seconds (- seconds in days)
+    // const date = Math.floor(Date.now() /1000 )
+    // const date = Math.floor(Date.now() /1000 ) - 86400
     return axios.get('http://hn.algolia.com/api/v1/search_by_date?', {
       params:{
-        tags: 'story',
+        tags: ('story', 'front_page'),
         // tags: ('story', 'poll'),
-        hitsPerPage: 50,
-        numericFilters: 'created_at_i<'+date
+        hitsPerPage: 30,
+        // numericFilters: 'created_at_i<'+date
       }
     })
   }
@@ -39,8 +42,6 @@ function App() {
   async function getData() {
     try {
       const jsonResponse = await apiCall()
-      console.log(jsonResponse)
-      // console.log(jsonResponse.data.hits)
       setArticles(jsonResponse.data.hits)
     }
     catch(error) {
