@@ -38,15 +38,20 @@ async function fetchArticlesBySection(section){
     const sectionTags = {
         home: 'search?tags=front_page',
         new: 'search_by_date?tags=story',
-        past: `search_by_date?tags=story&numericFilters=created_at_i<${date}`,
+        // past: `search_by_date?tags=story&numericFilters=created_at_i<${date}`,
         comments: 'search_by_date?tags=comment',
         ask: 'search_by_date?tags=ask_hn',
         show: 'search_by_date?tags=show_hn',
     }
     let searchParams = sectionTags[section]
-    let response = await axios.get('http://hn.algolia.com/api/v1/'+searchParams)
-    console.log(response)
-    return response
+    try {
+        let response = await axios.get('http://hn.algolia.com/api/v1/'+searchParams)
+        console.log(response)
+        return response
+    }
+    catch (error) {
+        console.error('Warning! Error occured:', error);
+    }
 }   
 
 async function fetchArticles(filters = null){
